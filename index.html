@@ -3,155 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnSide - Login</title>
+    <title>OnSide - Find Your Game</title>
     <style>
         :root {
-            --primary-color: #2E7D32; /* Sports green */
-            --secondary-color: #1565C0; /* Deep blue */
-            --background-color: #F5F7FA;
-            --text-color: #333333;
-            --border-color: #E0E0E0;
+            --primary: #2E7D32; /* Grass Green */
+            --secondary: #1565C0; /* Court Blue */
+            --accent: #FF8F00; /* Basketball Orange */
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 20px auto 40px;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        /* Sports Grid */
+        .sports-grid {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .sports-icons {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            gap: 40px;
+            font-size: 2rem;
+            margin-top: 30px;
         }
 
-        .login-container {
-            background-color: #FFFFFF;
-            width: 100%;
-            max-width: 400px;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        /* Registration CTA */
+        .promo-login {
+            max-width: 450px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #eee;
             text-align: center;
-            box-sizing: border-box;
         }
 
-        .app-title {
-            color: var(--primary-color);
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            color: #666666;
-            font-size: 16px;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-color);
-        }
-
-        .phone-input-group {
+        .phone-input-container {
             display: flex;
             gap: 10px;
+            margin: 25px 0;
         }
 
-        .country-code {
-            width: 80px;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            background-color: #F9F9F9;
-            color: #555;
-            text-align: center;
+        .c-code {
+            width: 70px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f0f0f0;
         }
 
-        .phone-input {
-            flex-grow: 1;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
+        .p-input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
         }
 
-        .phone-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.1);
-        }
-
-        .submit-btn {
+        .cta-button {
             width: 100%;
-            background-color: var(--primary-color);
+            background: var(--primary);
             color: white;
+            padding: 18px;
             border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 8px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
+            transition: transform 0.2s;
         }
 
-        .submit-btn:hover {
-            background-color: #1B5E20;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background: #1B5E20;
         }
 
-        .terms {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #888888;
-            line-height: 1.5;
-        }
-
-        .terms a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .terms a:hover {
-            text-decoration: underline;
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <div class="app-title">OnSide</div>
-        <div class="subtitle">Enter your phone number to get started. No passwords required.</div>
+    <section class="hero">
+        <h1>OnSide</h1>
+        <p>The easiest way to find teammates, book games, and play the sports you love. No team? No problem.</p>
+    </section>
 
-        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('OTP Sent to ' + document.getElementById('phone').value);">
-            <div class="form-group">
-                <label class="form-label" for="phone">Phone Number</label>
-                <div class="phone-input-group">
-                    <input type="text" class="country-code" value="+355" readonly aria-label="Country Code">
-                    <input type="tel" id="phone" class="phone-input" placeholder="e.g. 69 123 4567" required pattern="[0-9 ]+">
-                </div>
-            </div>
-
-            <button type="submit" class="submit-btn">Send OTP Code</button>
-        </form>
-
-        <div class="terms">
-            By continuing, you agree to OnSide's <br>
-            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+    <section class="features">
+        <div class="feature-card">
+            <h3>Organize or Play</h3>
+            <p>Switch between creating your own matches or joining existing ones with a single account[cite: 6].</p>
         </div>
+        <div class="feature-card">
+            <h3>Verified Connections</h3>
+            <p>Direct communication via WhatsApp once you're matched. Secure and transparent[cite: 22, 82].</p>
+        </div>
+        <div class="feature-card">
+            <h3>Fair Play</h3>
+            <p>Our rating system and strike policy ensure a high-quality community of reliable athletes[cite: 17, 28].</p>
+        </div>
+    </section>
+
+    <section class="sports-grid">
+        <h2>Currently Supporting</h2>
+        <div class="sports-icons">
+            <div>⚽<br><small>Football</small></div>
+            <div>🏀<br><small>Basketball</small></div>
+            <div>🏐<br><small>Volleyball</small></div>
+        </div>
+        <p style="margin-top: 20px; color: #666;"></p>
+    </section>
+
+    <div class="promo-login">
+        <h3>Ready to get OnSide?</h3>
+        <p>Just enter your phone number. We'll send a code to get you in—no passwords to remember.</p>
+        
+        <form onsubmit="event.preventDefault(); alert('OTP Sent!');">
+            <div class="phone-input-container">
+                <input type="text" class="c-code" value="+355" readonly>
+                <input type="tel" class="p-input" placeholder="Your Phone Number" required>
+            </div>
+            <button type="submit" class="cta-button">Join the Match</button>
+        </form>
     </div>
+
+    <footer>
+        &copy; 2026 OnSide App. Designed for the local sports community.
+    </footer>
 
 </body>
 </html>
